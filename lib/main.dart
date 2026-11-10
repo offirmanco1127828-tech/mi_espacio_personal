@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -28,7 +27,7 @@ final GoRouter _router = GoRouter(
     ),
   ],
 );
-
+// Main application widget that configures the theme and navigation.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -104,7 +103,7 @@ class AgePage extends StatefulWidget {
   @override
   State<AgePage> createState() => _AgePageState();
 }
-
+// Store the selected birth date and the calculated age.
 class _AgePageState extends State<AgePage> {
   DateTime? birthDate;
   int? age;
@@ -197,7 +196,7 @@ class BmiPage extends StatefulWidget {
   @override
   State<BmiPage> createState() => _BmiPageState();
 }
-
+// Manage the weight and height input fields for the BMI calculator.
 class _BmiPageState extends State<BmiPage> {
   final TextEditingController weightController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
@@ -241,7 +240,7 @@ class _BmiPageState extends State<BmiPage> {
       result = category;
     });
   }
-
+// Release the text controllers when the BMI screen is closed.
   @override
   void dispose() {
     weightController.dispose();
@@ -253,7 +252,7 @@ class _BmiPageState extends State<BmiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculadora de IMC'),
+        title: const Text('BMI Calculator'),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -336,11 +335,12 @@ class ZodiacPage extends StatefulWidget {
   @override
   State<ZodiacPage> createState() => _ZodiacPageState();
 }
-
+// Store the selected birth date and the corresponding zodiac sign.
 class _ZodiacPageState extends State<ZodiacPage> {
   DateTime? birthDate;
   String zodiacSign = '';
 
+// Open the date picker and determine the user's zodiac sign.
   Future<void> selectBirthDate() async {
     final selectedDate = await showDatePicker(
       context: context,
@@ -390,7 +390,7 @@ class _ZodiacPageState extends State<ZodiacPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Signo zodiacal')),
+      appBar: AppBar(title: const Text('Zodiac Sign')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
